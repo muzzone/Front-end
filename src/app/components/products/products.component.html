@@ -2,10 +2,10 @@
 <ul class="row">
   <li *ngFor="let product of products" class="col-4">
     <div class="card">
-      <img class="card-img-top" src="{{product.Image}}" alt="Card image cap">
+      <img class="card-img-top" src="{{product.img}}" alt="Card image cap">
       <div class="card-body">
-        <h5 class="card-title">{{product.Title}}</h5>
-        <p class="card-text">{{product.Text}}</p>
+        <h5 class="card-title">{{product.title}}</h5>
+        <p class="card-text">{{product.text}}</p>
         <a [routerLink]="['/Product', product.id]" class="btn btn-primary">Go somewhere</a>
       </div>
     </div>

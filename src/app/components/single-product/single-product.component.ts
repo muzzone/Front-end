@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpService } from '../../http.service';
+import { ProductService } from '../../product.service';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({
@@ -8,14 +8,31 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./single-product.component.css']
 })
 export class SingleProductComponent implements OnInit {
-  id: number;
-  product: any = {};
-  httpService = new HttpService();
-  constructor(private route: ActivatedRoute) {}
+
+  product = {
+    id: 0,
+    title: '',
+    img: '',
+    text: ''
+  };
+
+  id = +this.route.snapshot.params['id'];
+  constructor(private route: ActivatedRoute, private productService: ProductService) {}
 
   ngOnInit() {
-    this.id = +this.route.snapshot.params['id'];
-    this.product = this.httpService.getProduct(this.id);
+    this.productService.getProducts().subscribe((products) => {
+      this.productIni(products);
+    });
   }
 
+  productIni(products) {
+    let product;
+    const id = this.id;
+     products.map( function (prod) {
+       if (id === prod.id) {
+         product = prod;
+         return;
+       }});
+     this.product = product;
+  }
 }
