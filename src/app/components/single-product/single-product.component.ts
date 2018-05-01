@@ -9,26 +9,34 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class SingleProductComponent implements OnInit {
 
+  reviews;
   product = {
     id: 0,
     title: '',
     img: '',
     text: ''
   };
-
   id = +this.route.snapshot.params['id'];
+
   constructor(private route: ActivatedRoute, private productService: ProductService) {}
 
   ngOnInit() {
     this.productService.getProducts().subscribe((products) => {
-      this.productIni(products);
+      this.findSingleProduct(products);
+    });
+
+    this.productService.getReviews(this.id).subscribe((reviews) => {
+      this.reviews = reviews;
+      console.log(this.reviews);
     });
   }
 
-  productIni(products) {
+  findSingleProduct(products) {
     let product;
     const id = this.id;
+
      products.map( function (prod) {
+
        if (id === prod.id) {
          product = prod;
          return;

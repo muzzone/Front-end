@@ -1,0 +1,8 @@
+<h3>Reviews</h3>
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let review of reviews">
+    <p class="createdBy">{{review.created_by.email}} at {{review.created_at}}</p>
+    <p>Rate: {{review.rate}}</p>
+    <p>{{review.text}}</p>
+  </li>
+</ul>

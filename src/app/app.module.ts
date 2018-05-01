@@ -8,6 +8,7 @@ import { SingleProductComponent } from './components/single-product/single-produ
 import {Routes, RouterModule} from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import {ProductService} from './product.service';
+import { ReviewsComponent } from './components/reviews/reviews.component';
 
 
 const appRoutes: Routes = [
@@ -19,7 +20,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     ProductsComponent,
-    SingleProductComponent
+    SingleProductComponent,
+    ReviewsComponent
   ],
   imports: [
     BrowserModule,
