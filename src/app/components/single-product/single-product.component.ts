@@ -27,7 +27,6 @@ export class SingleProductComponent implements OnInit {
 
     this.productService.getReviews(this.id).subscribe((reviews) => {
       this.reviews = reviews;
-      console.log(this.reviews);
     });
   }
 

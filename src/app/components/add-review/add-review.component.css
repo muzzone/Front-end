@@ -1,0 +1,21 @@
+input[type = radio]{
+  display: none;
+}
+.rate{
+  color: lightgray;
+  cursor: pointer;
+  margin: 2px;
+}
+.rate:hover, .rate:hover ~ label{
+  color: gold;
+}
+.stars input:checked ~ label{
+  color: gold;
+}
+
+.stars{
+  cursor: pointer;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}

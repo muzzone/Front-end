@@ -1,5 +1,9 @@
 <nav class="navbar navbar-light bg-light">
-  <a class="navbar-brand" routerLink="/">Home</a>
+  <a class="navbar-brand" [routerLink]="'/'">Home</a>
+  <span>
+    <a [routerLink]="'/Login'">Login</a>
+    <a [routerLink]="'/Register'">Register</a>
+  </span>
 </nav>
 <div class="container mainContainer">
   <router-outlet></router-outlet>
