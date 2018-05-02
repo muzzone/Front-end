@@ -4,7 +4,7 @@ input[type = radio]{
 .rate{
   color: lightgray;
   cursor: pointer;
-  margin: 2px;
+  padding:0 2px;
 }
 .rate:hover, .rate:hover ~ label{
   color: gold;

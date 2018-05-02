@@ -12,6 +12,8 @@ import { ReviewsComponent } from './components/reviews/reviews.component';
 import { AddReviewComponent } from './components/add-review/add-review.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
+import { FormsModule } from '@angular/forms';
+import {AuthService} from './auth.service';
 
 
 const appRoutes: Routes = [
@@ -33,11 +35,12 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     HttpClientModule,
     AlertModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [ProductService],
+  providers: [ProductService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,5 @@
 
-<ul class="row">
+<ul class="row" *ngIf="this.authService.authToken">
   <li *ngFor="let product of products" class="col-4">
     <div class="card">
       <img class="card-img-top" src="http://smktesting.herokuapp.com/static/{{product.img}}" alt="Card image cap">
@@ -11,6 +11,7 @@
     </div>
   </li>
 </ul>
+<h4 *ngIf="!this.authService.authToken">You must be logged in</h4>
 <!--<button (click)="getTest()">Test</button>-->
 
 

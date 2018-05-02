@@ -1,7 +1,8 @@
 <nav class="navbar navbar-light bg-light">
   <a class="navbar-brand" [routerLink]="'/'">Home</a>
   <span>
-    <a [routerLink]="'/Login'">Login</a>
+    <a [routerLink]="'/Login'" *ngIf="!this.authService.authToken">Login</a>
+    <a (click)="logOut()" href="javascript:void(0);" *ngIf="this.authService.authToken">Logout</a>
     <a [routerLink]="'/Register'">Register</a>
   </span>
 </nav>
