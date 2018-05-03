@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import { AuthService } from '../../auth.service';
 import {Router} from '@angular/router';
+import {ProductService} from '../../product.service';
 
 @Component({
   selector: 'app-registration',
@@ -10,7 +11,8 @@ import {Router} from '@angular/router';
 })
 export class RegistrationComponent implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(
+    private authService: AuthService, private router: Router, private productService: ProductService) { }
 
   ngOnInit() {
   }
@@ -25,6 +27,7 @@ export class RegistrationComponent implements OnInit {
       if (response.success) {
         this.authService.authorized(response.token);
         this.router.navigate(['/']);
+        this.productService.setProducts();
       }
 
       else if (response.success === false) {

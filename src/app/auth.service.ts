@@ -10,7 +10,7 @@ export class AuthService implements OnInit {
     }
   }
 
-  authToken;
+  authToken = '';
 
   ngOnInit() {
   }
@@ -24,7 +24,7 @@ export class AuthService implements OnInit {
 
   logOut() {
     localStorage.removeItem('authToken');
-    this.authToken = false;
+    this.authToken = '';
   }
 
   register(data) {

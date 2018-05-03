@@ -12,11 +12,17 @@ interface Product {
 @Injectable()
 export class ProductService {
   constructor(private http: HttpClient, private authService: AuthService) {
+    if (this.authService.getToken()) {
+      this.setProducts();
+    }
+  }
+  products;
+
+  setProducts() {
     this.getProducts().subscribe((products) => {
       this.products = products;
     });
   }
-  products;
 
   getHeaders() {
     return {
