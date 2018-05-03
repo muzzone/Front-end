@@ -42,7 +42,7 @@ export class AuthService implements OnInit {
     this.authToken = token;
   }
 
-  isUserLoggedIn() {
+  getToken() {
     return this.authToken;
   }
 }

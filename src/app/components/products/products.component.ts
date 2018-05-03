@@ -19,9 +19,4 @@ export class ProductsComponent implements OnInit {
         this.products = response;
       });
   }
-  getTest() {
-     this.productService.getProducts().subscribe((prod) => {
-       console.log(prod);
-     });
-  }
 }
