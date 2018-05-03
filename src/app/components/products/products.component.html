@@ -11,7 +11,7 @@
     </div>
   </li>
 </ul>
-<h4 *ngIf="!this.authService.authToken">You must be logged in</h4>
+<h4 class="alert alert-warning" role="alert" *ngIf="!this.authService.authToken">You must be logged in</h4>
 
 
 

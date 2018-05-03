@@ -8,7 +8,6 @@ export class AuthService implements OnInit {
     if (localStorage.getItem('authToken')) {
       this.authToken = localStorage.getItem('authToken');
     }
-    console.log(this.authToken);
   }
 
   authToken;
@@ -17,7 +16,6 @@ export class AuthService implements OnInit {
   }
 
   login(data) {
-    console.log({'auth service login' : data});
     return this.http.post('http://smktesting.herokuapp.com/api/login/', data)
       .map((response: Response) => {
         return response;
@@ -30,7 +28,6 @@ export class AuthService implements OnInit {
   }
 
   register(data) {
-    console.log({'auth service register' : data});
     return this.http.post('http://smktesting.herokuapp.com/api/register/', data)
       .map((response: Response) => {
         return response;

@@ -21,7 +21,6 @@ export class AddReviewComponent implements OnInit {
     form.value.rate ? '' : form.value.rate = '0';
     this.productService.addReview(form.value, this.id).subscribe((response: any) => {
       if (response.success) {
-        console.log(response);
         this.reviews.push({
           rate: form.value.rate,
           text: form.value.text,
