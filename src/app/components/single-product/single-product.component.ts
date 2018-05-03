@@ -21,9 +21,14 @@ export class SingleProductComponent implements OnInit {
   constructor(private route: ActivatedRoute, private productService: ProductService) {}
 
   ngOnInit() {
-    this.productService.getProducts().subscribe((products) => {
+    const products = this.productService.products;
+    if (!products) {
+      this.productService.getProducts().subscribe((prod) => {
+        this.findSingleProduct(prod);
+      });
+    } else {
       this.findSingleProduct(products);
-    });
+    }
 
     this.productService.getReviews(this.id).subscribe((reviews) => {
       this.reviews = reviews;
@@ -35,7 +40,6 @@ export class SingleProductComponent implements OnInit {
     const id = this.id;
 
      products.map( function (prod) {
-
        if (id === prod.id) {
          product = prod;
          return;

@@ -12,6 +12,7 @@ export class AddReviewComponent implements OnInit {
   constructor(private productService: ProductService) { }
 
   @Input() id: number;
+  @Input() reviews;
 
   ngOnInit() {
   }
@@ -21,13 +22,16 @@ export class AddReviewComponent implements OnInit {
     this.productService.addReview(form.value, this.id).subscribe((response: any) => {
       if (response.success) {
         console.log(response);
-      }
-
-      else if (response.success === false) {
+        this.reviews.push({
+          rate: form.value.rate,
+          text: form.value.text,
+          created_by: {email: 'user@user.com '},
+          created_at: 'new'
+        });
+        form.resetForm();
+      } else if (response.success === false) {
         alert(response.message);
-      }
-
-      else {
+      } else {
         alert('Something went wrong');
       }
     });

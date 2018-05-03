@@ -1,6 +1,6 @@
 
 <ul class="row" *ngIf="this.authService.authToken">
-  <li *ngFor="let product of products" class="col-4">
+  <li *ngFor="let product of this.productService.products" class="col-4">
     <div class="card">
       <img class="card-img-top" src="http://smktesting.herokuapp.com/static/{{product.img}}" alt="Card image cap">
       <div class="card-body">

@@ -1,14 +1,16 @@
-<div class="row">
-  <div class="col-7 productInfo">
-    <h1>{{product.title}}</h1>
-    <hr>
-    <img src="http://smktesting.herokuapp.com/static/{{product.img}}" alt="img">
-    <hr>
-    <p>{{product.text}}</p>
-  </div>
-  <div class="col-5">
-    <app-add-review [id]="id"></app-add-review>
-    <app-reviews [reviews]="reviews"></app-reviews>
+<div>
+  <div class="row">
+    <div class="col-7 productInfo">
+      <h1>{{product.title}}</h1>
+      <hr>
+      <img src="http://smktesting.herokuapp.com/static/{{product.img}}" alt="img">
+      <hr>
+      <p>{{product.text}}</p>
+    </div>
+    <div class="col-5">
+      <app-add-review [reviews]="reviews" [id]="id"></app-add-review>
+      <app-reviews [reviews]="reviews"></app-reviews>
+    </div>
   </div>
 </div>
 

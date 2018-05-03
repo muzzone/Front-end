@@ -2,10 +2,21 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {AuthService} from './auth.service';
 
+interface Product {
+  id: number;
+  img: string;
+  text: string;
+  title: string;
+}
 
 @Injectable()
 export class ProductService {
-  constructor(private http: HttpClient, private authService: AuthService) { }
+  constructor(private http: HttpClient, private authService: AuthService) {
+    this.getProducts().subscribe((products) => {
+      this.products = products;
+    });
+  }
+  products;
 
   getHeaders() {
     return {
@@ -13,10 +24,6 @@ export class ProductService {
         'Authorization': 'Token ' + this.authService.getToken()
       })
     };
-  }
-
-  getData() {
-    return this.http.get('http://smktesting.herokuapp.com/api/products/', this.getHeaders());
   }
 
   getProducts() {
