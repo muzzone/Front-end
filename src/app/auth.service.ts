@@ -16,10 +16,7 @@ export class AuthService implements OnInit {
   }
 
   login(data) {
-    return this.http.post('http://smktesting.herokuapp.com/api/login/', data)
-      .map((response: Response) => {
-        return response;
-      });
+    return this.http.post('http://smktesting.herokuapp.com/api/login/', data);
   }
 
   logOut() {
@@ -28,10 +25,7 @@ export class AuthService implements OnInit {
   }
 
   register(data) {
-    return this.http.post('http://smktesting.herokuapp.com/api/register/', data)
-      .map((response: Response) => {
-        return response;
-      });
+    return this.http.post('http://smktesting.herokuapp.com/api/register/', data);
   }
 
   authorized(token) {

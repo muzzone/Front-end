@@ -33,23 +33,14 @@ export class ProductService {
   }
 
   getProducts() {
-    return this.http.get('http://smktesting.herokuapp.com/api/products/', this.getHeaders())
-      .map((response: Response) => {
-        return response;
-      });
+    return this.http.get('http://smktesting.herokuapp.com/api/products/', this.getHeaders());
   }
 
   getReviews(id) {
-    return this.http.get('http://smktesting.herokuapp.com/api/reviews/' + id, this.getHeaders())
-      .map((response: Response) => {
-        return response;
-      });
+    return this.http.get('http://smktesting.herokuapp.com/api/reviews/' + id, this.getHeaders());
   }
 
   addReview(data, id) {
-    return this.http.post('http://smktesting.herokuapp.com/api/reviews/' + id, data, this.getHeaders())
-      .map((response: Response) => {
-        return response;
-      });
+    return this.http.post('http://smktesting.herokuapp.com/api/reviews/' + id, data, this.getHeaders());
   }
 }
