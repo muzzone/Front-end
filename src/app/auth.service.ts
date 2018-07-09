@@ -1,19 +1,18 @@
-import {Injectable, OnInit} from '@angular/core';
+import {Injectable} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ReplaySubject } from 'rxjs/ReplaySubject';
 
 @Injectable()
-export class AuthService implements OnInit {
+export class AuthService {
 
   constructor(private http: HttpClient) {
     if (localStorage.getItem('authToken')) {
-      this.authToken = localStorage.getItem('authToken');
+      this.authToken_.next(localStorage.getItem('authToken'));
     }
   }
 
   authToken = '';
-
-  ngOnInit() {
-  }
+  authToken_ = new ReplaySubject(1);
 
   login(data) {
     return this.http.post('http://smktesting.herokuapp.com/api/login/', data);
@@ -21,7 +20,7 @@ export class AuthService implements OnInit {
 
   logOut() {
     localStorage.removeItem('authToken');
-    this.authToken = '';
+    this.authToken_.next('');
   }
 
   register(data) {
@@ -30,10 +29,10 @@ export class AuthService implements OnInit {
 
   authorized(token) {
     localStorage.setItem('authToken', token);
-    this.authToken = token;
+    this.authToken_.next(token);
   }
 
-  getToken() {
-    return this.authToken;
+  getToken_() {
+    return this.authToken_;
   }
 }

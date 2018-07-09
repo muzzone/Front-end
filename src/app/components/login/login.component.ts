@@ -27,14 +27,10 @@ export class LoginComponent implements OnInit {
         this.authService.authorized(response.token);
         this.router.navigate(['/']);
         this.productService.setProducts();
-      }
-
-      else if (response.success === false) {
+      } else if (response.success === false) {
           this.error = true;
           this.errorMassage = response.message;
-      }
-
-      else {
+      } else {
         this.error = true;
         this.errorMassage = 'Something went wrong';
       }

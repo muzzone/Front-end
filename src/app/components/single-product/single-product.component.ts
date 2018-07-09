@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { ProductService } from '../../product.service';
 import {ActivatedRoute} from '@angular/router';
 
@@ -7,7 +7,7 @@ import {ActivatedRoute} from '@angular/router';
   templateUrl: './single-product.component.html',
   styleUrls: ['./single-product.component.css']
 })
-export class SingleProductComponent implements OnInit {
+export class SingleProductComponent implements OnInit{
 
   reviews;
   product = {
@@ -21,29 +21,12 @@ export class SingleProductComponent implements OnInit {
   constructor(private route: ActivatedRoute, private productService: ProductService) {}
 
   ngOnInit() {
-    const products = this.productService.products;
-    if (!products) {
-      this.productService.getProducts().subscribe((prod) => {
-        this.findSingleProduct(prod);
-      });
-    } else {
-      this.findSingleProduct(products);
-    }
+    this.productService.getProducts_().subscribe((data: any) => {
+      this.product = data.filter((item) => item.id === this.id)[0];
+    });
 
     this.productService.getReviews(this.id).subscribe((reviews) => {
       this.reviews = reviews;
     });
-  }
-
-  findSingleProduct(products) {
-    let product;
-    const id = this.id;
-
-     products.map( function (prod) {
-       if (id === prod.id) {
-         product = prod;
-         return;
-       }});
-     this.product = product;
   }
 }

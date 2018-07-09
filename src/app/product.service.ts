@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {AuthService} from './auth.service';
+import { ReplaySubject } from 'rxjs/ReplaySubject';
 
 interface Product {
   id: number;
@@ -12,22 +13,29 @@ interface Product {
 @Injectable()
 export class ProductService {
   constructor(private http: HttpClient, private authService: AuthService) {
-    if (this.authService.getToken()) {
-      this.setProducts();
-    }
+    this.authService.getToken_().subscribe((token) => {
+      this.authToken = token;
+    });
+    this.authToken ? this.setProducts() : '';
   }
-  products;
+
+  products_ = new ReplaySubject(1);
+  authToken;
 
   setProducts() {
     this.getProducts().subscribe((products) => {
-      this.products = products;
+      this.products_.next(products);
     });
+  }
+
+  getProducts_() {
+    return this.products_;
   }
 
   getHeaders() {
     return {
       headers: new HttpHeaders({
-        'Authorization': 'Token ' + this.authService.getToken()
+        'Authorization': 'Token ' + this.authToken
       })
     };
   }
